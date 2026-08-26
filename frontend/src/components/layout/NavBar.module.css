@@ -1,0 +1,27 @@
+.nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 30px;
+}
+
+.link {
+  color: rgb(198, 189, 18);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: #333;
+  color: #bee60a;
+  transform: translateY(-2px);
+}
+.logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
