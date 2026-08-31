@@ -1,11 +1,29 @@
 import { useState } from "react";
 
 import EditProject from "../modals/EditProject";
+import DeleteProjectModal from "../modals/DeleteProjectModal";
 
 import styles from "./ProjectCard.module.css";
 
-export default function ProjectCard({ project, updateProject }) {
+export default function ProjectCard({ project, updateProject, deleteProject }) {
   const [modal, setModal] = useState(false);
+
+  const [deleteModal, setDeleteModal] = useState(false);
+
+  async function handleDeleteProject() {
+    const response = await fetch(
+      `http://localhost:5000/projects/${project.id}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    if (response.ok) {
+      deleteProject(project.id);
+
+      setDeleteModal(false);
+    }
+  }
 
   return (
     <>
@@ -30,7 +48,12 @@ export default function ProjectCard({ project, updateProject }) {
             Editar
           </button>
 
-          <button className={styles.deleteButton}>Excluir</button>
+          <button
+            className={styles.deleteButton}
+            onClick={() => setDeleteModal(true)}
+          >
+            Excluir
+          </button>
         </div>
       </div>
 
@@ -39,6 +62,14 @@ export default function ProjectCard({ project, updateProject }) {
           project={project}
           setModal={setModal}
           updateProject={updateProject}
+        />
+      )}
+
+      {deleteModal && (
+        <DeleteProjectModal
+          project={project}
+          setModal={setDeleteModal}
+          handleDelete={handleDeleteProject}
         />
       )}
     </>

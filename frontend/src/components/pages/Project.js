@@ -11,6 +11,11 @@ export default function Projects() {
       ),
     );
   }
+  function deleteProject(projectId) {
+    setProjects((currentProjects) =>
+      currentProjects.filter((project) => project.id !== projectId),
+    );
+  }
 
   useEffect(() => {
     fetch("http://localhost:5000/projects")
@@ -31,6 +36,7 @@ export default function Projects() {
             key={project.id}
             project={project}
             updateProject={updateProject}
+            deleteProject={deleteProject}
           />
         ))}
       </div>

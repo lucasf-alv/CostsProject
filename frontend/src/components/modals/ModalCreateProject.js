@@ -91,12 +91,12 @@ export default function ModalCreateProject({ setModal }) {
                 onChange={(event) => setCategory(event.target.value)}
               >
                 <option value="">Selecione a categoria</option>
-
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
                   </option>
                 ))}
+                40000
               </select>
 
               <button className={styles.createButton} type="submit">
