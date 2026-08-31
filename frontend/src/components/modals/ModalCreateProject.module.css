@@ -1,0 +1,71 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.modal {
+  width: 700px;
+  height: 400px;
+
+  background-color: white;
+
+  padding: 40px;
+
+  border-radius: 20px;
+
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+.closeButton {
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+
+  width: 40px;
+  height: 40px;
+
+  background: red;
+  color: white;
+
+  border: none;
+
+  font-size: 30px;
+
+  cursor: pointer;
+}
+
+.createButton {
+  background-color: #222;
+  color: white;
+
+  padding: 10px 20px;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.createButton:hover {
+  color: #ffbb33;
+}
+.projectNameInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.projectNameInput:focus {
+  outline: none;
+  border: 2px solid #ffbb33;
+}
