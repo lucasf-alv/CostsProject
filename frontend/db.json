@@ -1,9 +1,29 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "name": "Projeto teste",
+      "budget": 40000,
+      "category": "4",
+      "id": "-yIa6g0pyWo"
+    }
+  ],
   "categories": [
-    { "id": 1, "name": "Infra" },
-    { "id": 2, "name": "Desenvolvimento" },
-    { "id": 3, "name": "Design" },
-    { "id": 4, "name": "Marketing" }
-  ]
+    {
+      "id": "1",
+      "name": "Infra"
+    },
+    {
+      "id": "2",
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": "3",
+      "name": "Design"
+    },
+    {
+      "id": "4",
+      "name": "Marketing"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
