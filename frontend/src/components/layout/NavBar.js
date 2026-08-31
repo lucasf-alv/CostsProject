@@ -21,8 +21,8 @@ export default function NavBar() {
           Empresa
         </Link>
 
-        <Link to="/newproject" className={styles.link}>
-          Novo Projeto
+        <Link to="/project" className={styles.link}>
+          Projetos
         </Link>
       </div>
     </div>

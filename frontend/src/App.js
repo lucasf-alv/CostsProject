@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import Company from "./components/pages/Company";
-import NewProject from "./components/pages/NewProject";
+import Project from "./components/pages/Project";
 
 import Container from "./components/layout/Container";
 import NavBar from "./components/layout/NavBar";
@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/company" element={<Company />} />
-            <Route path="/newproject" element={<NewProject />} />
+            <Route path="/project" element={<Project />} />
           </Routes>
         </main>
 

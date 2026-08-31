@@ -1,6 +1,16 @@
+import { use } from "react";
 import styles from "./ModalCreateProject.module.css";
-
+import { useState, useEffect } from "react";
 export default function ModalCreateProject({ setModal }) {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/categories")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -24,9 +34,11 @@ export default function ModalCreateProject({ setModal }) {
           />
           <select className={styles.categorySelect}>
             <option value="">Selecione a categoria</option>
-            <option value="design">Design</option>
-            <option value="development">Desenvolvimento</option>
-            <option value="marketing">Marketing</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
 
           <button className={styles.createButton} type="submit">
