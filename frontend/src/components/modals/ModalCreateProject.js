@@ -11,14 +11,28 @@ export default function ModalCreateProject({ setModal }) {
         <h2>Criar Projeto</h2>
 
         <p>Preencha os dados do seu projeto.</p>
+        <form className={styles.form}>
+          <input
+            type="text"
+            placeholder="Nome do projeto"
+            className={styles.projectNameInput}
+          />
+          <input
+            type="number"
+            placeholder="Insira o orçamento total"
+            className={styles.budgetInput}
+          />
+          <select className={styles.categorySelect}>
+            <option value="">Selecione a categoria</option>
+            <option value="design">Design</option>
+            <option value="development">Desenvolvimento</option>
+            <option value="marketing">Marketing</option>
+          </select>
 
-        <input
-          type="text"
-          placeholder="Nome do projeto"
-          className={styles.projectNameInput}
-        />
-
-        <button className={styles.createButton}>Criar Projeto</button>
+          <button className={styles.createButton} type="submit">
+            Criar Projeto
+          </button>
+        </form>
       </div>
     </div>
   );
