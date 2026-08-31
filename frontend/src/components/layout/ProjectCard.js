@@ -5,10 +5,18 @@ import DeleteProjectModal from "../modals/DeleteProjectModal";
 
 import styles from "./ProjectCard.module.css";
 
-export default function ProjectCard({ project, updateProject, deleteProject }) {
+export default function ProjectCard({
+  project,
+  categories,
+  updateProject,
+  deleteProject,
+}) {
   const [modal, setModal] = useState(false);
-
   const [deleteModal, setDeleteModal] = useState(false);
+
+  const categoryName = categories.find(
+    (category) => String(category.id) === String(project.category),
+  )?.name;
 
   async function handleDeleteProject() {
     const response = await fetch(
@@ -20,7 +28,6 @@ export default function ProjectCard({ project, updateProject, deleteProject }) {
 
     if (response.ok) {
       deleteProject(project.id);
-
       setDeleteModal(false);
     }
   }
@@ -39,7 +46,8 @@ export default function ProjectCard({ project, updateProject, deleteProject }) {
           </p>
 
           <p>
-            <strong>Categoria:</strong> {project.category}
+            <strong>Categoria:</strong>{" "}
+            {categoryName || "Categoria não encontrada"}
           </p>
         </div>
 
