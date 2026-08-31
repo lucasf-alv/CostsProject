@@ -1,0 +1,192 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.modal {
+  position: relative;
+
+  width: 500px;
+  max-width: 90%;
+
+  padding: 40px;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão X */
+
+.closeButton {
+  position: absolute;
+
+  top: 10px;
+  right: 15px;
+
+  width: 35px;
+  height: 35px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 30px;
+  line-height: 30px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.closeButton:hover {
+  color: #ef982e;
+}
+
+/* Título */
+
+.modal h2 {
+  margin-bottom: 10px;
+
+  font-size: 2rem;
+}
+
+/* Texto */
+
+.modal p {
+  margin-bottom: 25px;
+
+  color: #7b7b7b;
+}
+
+/* Formulário */
+
+.form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+/* Inputs e Select */
+
+.projectNameInput,
+.budgetInput,
+.categorySelect {
+  width: 100%;
+
+  padding: 12px 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+
+  font-size: 1rem;
+
+  background-color: white;
+
+  transition: 0.3s;
+}
+
+/* Quando o usuário clicar no campo */
+
+.projectNameInput:focus,
+.budgetInput:focus,
+.categorySelect:focus {
+  outline: none;
+
+  border-color: #ef982e;
+
+  box-shadow: 0 0 5px rgba(239, 152, 46, 0.3);
+}
+
+/* Botão salvar */
+
+.createButton {
+  margin-top: 10px;
+
+  padding: 12px 20px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background-color: #222;
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.createButton:hover {
+  color: #ffbb33;
+
+  background-color: #111;
+}
+
+/* Mensagem de sucesso */
+
+.success {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  min-height: 250px;
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 50%;
+
+  background-color: #4caf50;
+
+  color: white;
+
+  font-size: 35px;
+
+  font-weight: bold;
+}
+
+.success h2 {
+  margin-bottom: 10px;
+}
+
+.success p {
+  color: #7b7b7b;
+}

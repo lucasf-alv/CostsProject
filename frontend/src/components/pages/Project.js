@@ -4,6 +4,13 @@ import ProjectCard from "../layout/ProjectCard";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  function updateProject(updatedProject) {
+    setProjects((currentProjects) =>
+      currentProjects.map((project) =>
+        project.id === updatedProject.id ? updatedProject : project,
+      ),
+    );
+  }
 
   useEffect(() => {
     fetch("http://localhost:5000/projects")
@@ -20,7 +27,11 @@ export default function Projects() {
 
       <div>
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            updateProject={updateProject}
+          />
         ))}
       </div>
     </div>
