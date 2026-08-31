@@ -1,3 +1,28 @@
-export default function Project() {
-  return <h1>NewProject</h1>;
+import { useEffect, useState } from "react";
+
+import ProjectCard from "../layout/ProjectCard";
+
+export default function Projects() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/projects")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div>
+      <h1>Meus Projetos</h1>
+
+      <div>
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
+    </div>
+  );
 }
