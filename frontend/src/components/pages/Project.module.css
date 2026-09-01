@@ -1,0 +1,104 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 2rem;
+}
+
+/* =========================
+   BOTÃO CRIAR PROJETO
+========================= */
+
+.addProjectButton {
+  padding: 10px 20px;
+
+  border: 1px solid #222;
+
+  border-radius: 5px;
+
+  background-color: white;
+
+  color: #222;
+
+  font-size: 0.95rem;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.addProjectButton:hover {
+  background-color: #222;
+
+  color: #ffbb33;
+}
+
+/* =========================
+   GRID DOS PROJETOS
+========================= */
+
+.projectsGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  align-items: start;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 900px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 15px;
+  }
+
+  .header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}

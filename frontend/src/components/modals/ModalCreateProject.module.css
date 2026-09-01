@@ -167,3 +167,32 @@
 .success p {
   color: #7b7b7b;
 }
+.invalid {
+  border-color: #e74c3c !important;
+  background-color: #fff8f8;
+}
+
+.invalid:focus {
+  outline: none;
+
+  border-color: #e74c3c !important;
+
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+}
+
+.error {
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  box-sizing: border-box;
+
+  background-color: #fff1f1;
+
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+
+  color: #c0392b;
+
+  font-size: 0.9rem;
+  text-align: left;
+}

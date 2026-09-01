@@ -1,3 +1,7 @@
+/* =========================
+   OVERLAY
+========================= */
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -10,6 +14,10 @@
 
   z-index: 9999;
 }
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
   position: relative;
@@ -28,7 +36,9 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Botão X */
+/* =========================
+   BOTÃO FECHAR
+========================= */
 
 .closeButton {
   position: absolute;
@@ -46,6 +56,8 @@
   font-size: 30px;
   line-height: 30px;
 
+  color: #222;
+
   cursor: pointer;
 
   transition: 0.3s;
@@ -53,25 +65,37 @@
 
 .closeButton:hover {
   color: #ef982e;
+
+  transform: scale(1.1);
 }
 
-/* Título */
+/* =========================
+   TÍTULO
+========================= */
 
 .modal h2 {
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 
   font-size: 2rem;
+
+  color: #222;
 }
 
-/* Texto */
+/* =========================
+   DESCRIÇÃO
+========================= */
 
-.modal p {
-  margin-bottom: 25px;
+.modal > p {
+  margin: 0 0 25px;
 
   color: #7b7b7b;
+
+  line-height: 1.5;
 }
 
-/* Formulário */
+/* =========================
+   FORMULÁRIO
+========================= */
 
 .form {
   display: flex;
@@ -81,7 +105,9 @@
   gap: 15px;
 }
 
-/* Inputs e Select */
+/* =========================
+   INPUTS E SELECT
+========================= */
 
 .projectNameInput,
 .budgetInput,
@@ -98,12 +124,27 @@
 
   font-size: 1rem;
 
+  font-family: inherit;
+
   background-color: white;
+
+  color: #222;
 
   transition: 0.3s;
 }
 
-/* Quando o usuário clicar no campo */
+/* =========================
+   PLACEHOLDER
+========================= */
+
+.projectNameInput::placeholder,
+.budgetInput::placeholder {
+  color: #999;
+}
+
+/* =========================
+   FOCO NOS CAMPOS
+========================= */
 
 .projectNameInput:focus,
 .budgetInput:focus,
@@ -115,9 +156,59 @@
   box-shadow: 0 0 5px rgba(239, 152, 46, 0.3);
 }
 
-/* Botão salvar */
+/* =========================
+   CAMPO INVÁLIDO
+========================= */
+
+.invalid {
+  border-color: #e74c3c !important;
+
+  background-color: #fff8f8;
+}
+
+.invalid:focus {
+  outline: none;
+
+  border-color: #e74c3c !important;
+
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+}
+
+/* =========================
+   MENSAGEM DE ERRO
+========================= */
+
+.error {
+  width: 100%;
+
+  margin: 0;
+
+  padding: 10px 15px;
+
+  box-sizing: border-box;
+
+  background-color: #fff1f1;
+
+  border: 1px solid #e74c3c;
+
+  border-radius: 5px;
+
+  color: #c0392b;
+
+  font-size: 0.9rem;
+
+  line-height: 1.4;
+
+  text-align: left;
+}
+
+/* =========================
+   BOTÃO SALVAR
+========================= */
 
 .createButton {
+  width: 100%;
+
   margin-top: 10px;
 
   padding: 12px 20px;
@@ -140,12 +231,14 @@
 }
 
 .createButton:hover {
-  color: #ffbb33;
-
   background-color: #111;
+
+  color: #ffbb33;
 }
 
-/* Mensagem de sucesso */
+/* =========================
+   TELA DE SUCESSO
+========================= */
 
 .success {
   display: flex;
@@ -160,6 +253,10 @@
 
   min-height: 250px;
 }
+
+/* =========================
+   ÍCONE DE SUCESSO
+========================= */
 
 .successIcon {
   width: 60px;
@@ -183,10 +280,22 @@
   font-weight: bold;
 }
 
+/* =========================
+   TEXTO DE SUCESSO
+========================= */
+
 .success h2 {
-  margin-bottom: 10px;
+  margin: 0 0 10px;
+
+  font-size: 1.8rem;
+
+  color: #222;
 }
 
 .success p {
+  margin: 0;
+
   color: #7b7b7b;
+
+  line-height: 1.5;
 }

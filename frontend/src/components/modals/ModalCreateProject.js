@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import styles from "./ModalCreateProject.module.css";
 
 export default function ModalCreateProject({ setModal }) {
-  const navigate = useNavigate();
-
   const [categories, setCategories] = useState([]);
 
   const [name, setName] = useState("");
@@ -13,33 +9,64 @@ export default function ModalCreateProject({ setModal }) {
   const [category, setCategory] = useState("");
 
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    setError("");
+
+    // =========================
+    // VALIDAÇÃO
+    // =========================
+
+    if (!name.trim()) {
+      setError("Preencha o nome do projeto.");
+      return;
+    }
+
+    if (!budget || Number(budget) <= 0) {
+      setError("Informe um orçamento válido.");
+      return;
+    }
+
+    if (!category) {
+      setError("Selecione uma categoria.");
+      return;
+    }
+
+    // =========================
+    // CRIA PROJETO
+    // =========================
+
     const project = {
-      name: name,
+      name: name.trim(),
       budget: Number(budget),
       category: category,
     };
 
-    const response = await fetch("http://localhost:5000/projects", {
-      method: "POST",
+    try {
+      const response = await fetch("http://localhost:5000/projects", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(project),
+      });
 
-      headers: {
-        "Content-Type": "application/json",
-      },
+      if (!response.ok) {
+        throw new Error("Erro ao criar projeto");
+      }
 
-      body: JSON.stringify(project),
-    });
-
-    if (response.ok) {
       setSuccess(true);
 
       setTimeout(() => {
         setModal(false);
         window.location.href = "/projects";
       }, 2000);
+    } catch (error) {
+      console.error(error);
+      setError("Não foi possível criar o projeto.");
     }
   }
 
@@ -69,35 +96,50 @@ export default function ModalCreateProject({ setModal }) {
             <p>Preencha os dados do seu projeto.</p>
 
             <form className={styles.form} onSubmit={handleSubmit}>
+              {/* NOME */}
               <input
                 type="text"
                 placeholder="Nome do projeto"
-                className={styles.projectNameInput}
+                className={`${styles.projectNameInput} ${
+                  !name.trim() && error ? styles.invalid : ""
+                }`}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
               />
 
+              {/* ORÇAMENTO */}
               <input
                 type="number"
                 placeholder="Insira o orçamento total"
-                className={styles.budgetInput}
+                className={`${styles.budgetInput} ${
+                  (!budget || Number(budget) <= 0) && error
+                    ? styles.invalid
+                    : ""
+                }`}
                 value={budget}
                 onChange={(event) => setBudget(event.target.value)}
+                min="0"
+                step="0.01"
               />
-
+              {/* CATEGORIA */}
               <select
-                className={styles.categorySelect}
+                className={`${styles.categorySelect} ${
+                  !category && error ? styles.invalid : ""
+                }`}
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
               >
                 <option value="">Selecione a categoria</option>
+
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
                   </option>
                 ))}
-                40000
               </select>
+
+              {/* MENSAGEM DE ERRO */}
+              {error && <p className={styles.error}>⚠ {error}</p>}
 
               <button className={styles.createButton} type="submit">
                 Criar Projeto

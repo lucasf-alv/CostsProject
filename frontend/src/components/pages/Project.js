@@ -39,22 +39,33 @@ export default function Projects() {
   }
 
   return (
-    <div>
-      <h1>Meus Projetos</h1>
-      <button onClick={() => setCreateProjectModal(true)}>Criar Projeto</button>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1>Meus Projetos</h1>
+
+        <button
+          onClick={() => setCreateProjectModal(true)}
+          className={styles.addProjectButton}
+        >
+          + Criar Projeto
+        </button>
+      </div>
+
       {createProjectModal && (
         <ModalCreateProject setModal={setCreateProjectModal} />
       )}
 
-      {projects.map((project) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-          categories={categories}
-          updateProject={updateProject}
-          deleteProject={deleteProject}
-        />
-      ))}
+      <div className={styles.projectsGrid}>
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            categories={categories}
+            updateProject={updateProject}
+            deleteProject={deleteProject}
+          />
+        ))}
+      </div>
     </div>
   );
 }

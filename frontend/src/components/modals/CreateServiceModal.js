@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import styles from "./CreateServiceModal.module.css";
 
 export default function CreateServiceModal({
@@ -19,39 +20,60 @@ export default function CreateServiceModal({
 
     setError("");
 
+    // =========================
+    // VALIDAÇÃO
+    // =========================
+
+    if (!name.trim()) {
+      setError("Preencha o nome do serviço.");
+      return;
+    }
+
+    if (!cost || Number(cost) <= 0) {
+      setError("Informe um custo válido para o serviço.");
+      return;
+    }
+
+    if (!description.trim()) {
+      setError("Preencha a descrição do serviço.");
+      return;
+    }
+
     const serviceCost = Number(cost);
 
-    // Soma tudo que já foi gasto no projeto
+    // =========================
+    // VERIFICA ORÇAMENTO
+    // =========================
+
     const totalServices = services.reduce(
       (total, service) => total + Number(service.cost),
       0,
     );
 
-    // Soma o que já foi gasto + o novo serviço
     const newTotal = totalServices + serviceCost;
 
-    // Verifica se ultrapassa o orçamento
     if (newTotal > Number(projectData.budget)) {
       setError("O custo deste serviço ultrapassa o orçamento disponível.");
-
       return;
     }
 
+    // =========================
+    // CRIA SERVIÇO
+    // =========================
+
     const service = {
       projectId: projectData.id,
-      name: name,
+      name: name.trim(),
       cost: serviceCost,
-      description: description,
+      description: description.trim(),
     };
 
     try {
       const response = await fetch("http://localhost:5000/services", {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify(service),
       });
 
@@ -61,12 +83,12 @@ export default function CreateServiceModal({
 
       const createdService = await response.json();
 
-      // Adiciona o novo serviço na lista da página
+      // Atualiza a lista de serviços da página
       setServices((currentServices) => [...currentServices, createdService]);
 
       setSuccess(true);
 
-      // Fecha o modal depois de 2 segundos
+      // Fecha o modal
       setTimeout(() => {
         setModal(false);
       }, 2000);
@@ -94,33 +116,40 @@ export default function CreateServiceModal({
             <p>Adicione um novo serviço ao projeto.</p>
 
             <form className={styles.form} onSubmit={submitService}>
+              {/* NOME */}
               <input
                 type="text"
                 placeholder="Nome do serviço"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                required
+                className={!name.trim() && error ? styles.invalid : ""}
               />
 
+              {/* CUSTO */}
               <input
                 type="number"
                 placeholder="Custo do serviço"
                 value={cost}
                 onChange={(event) => setCost(event.target.value)}
+                className={
+                  (!cost || Number(cost) <= 0) && error ? styles.invalid : ""
+                }
                 min="0"
                 step="0.01"
-                required
               />
 
+              {/* DESCRIÇÃO */}
               <textarea
                 placeholder="Descrição do serviço"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                required
+                className={!description.trim() && error ? styles.invalid : ""}
               />
 
-              {error && <p className={styles.error}>{error}</p>}
+              {/* ERRO */}
+              {error && <p className={styles.error}>⚠ {error}</p>}
 
+              {/* BOTÕES */}
               <div className={styles.actions}>
                 <button
                   type="button"
