@@ -320,3 +320,132 @@
     gap: 15px;
   }
 }
+.serviceCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px;
+
+  background-color: white;
+
+  border-radius: 8px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+.serviceInfo {
+  flex: 1;
+}
+
+.serviceInfo h3 {
+  margin: 0 0 8px;
+
+  color: #222;
+}
+
+.serviceInfo p {
+  margin: 0;
+
+  color: #666;
+}
+
+.serviceCost {
+  white-space: nowrap;
+
+  color: #222;
+}
+
+.deleteServiceButton {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.deleteServiceButton:hover {
+  background-color: #222;
+  color: #ffbb33;
+}
+.serviceCard {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  margin-bottom: 15px;
+}
+
+.serviceInfo {
+  flex: 1;
+}
+
+.serviceInfo h3 {
+  margin: 0 0 8px;
+
+  color: #222;
+}
+
+.serviceInfo p {
+  margin: 0;
+
+  color: #666;
+}
+
+.serviceActions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  margin-left: 30px;
+}
+
+.serviceCost {
+  white-space: nowrap;
+
+  color: #222;
+
+  font-size: 1.1rem;
+}
+
+.deleteServiceButton {
+  padding: 9px 15px;
+
+  border: 1px solid #222;
+
+  border-radius: 5px;
+
+  background-color: white;
+
+  color: #222;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  white-space: nowrap;
+}
+
+.deleteServiceButton:hover {
+  background-color: #222;
+
+  color: #ffbb33;
+}

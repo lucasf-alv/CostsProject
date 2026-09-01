@@ -5,6 +5,7 @@ import CreateServiceModal from "../modals/CreateServiceModal";
 import EditProject from "../modals/EditProject";
 
 import styles from "./ProjectDetails.module.css";
+import DeleteServiceModal from "../modals/DeleteServiceModal";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -12,6 +13,8 @@ export default function ProjectDetails() {
   const [project, setProject] = useState(null);
   const [services, setServices] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [deleteServiceModal, setDeleteServiceModal] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   const [serviceModal, setServiceModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
@@ -62,6 +65,38 @@ export default function ProjectDetails() {
   // Atualiza o projeto depois de editar
   function updateProject(updatedProject) {
     setProject(updatedProject);
+  }
+  async function deleteService() {
+    if (!selectedService) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/services/${selectedService.id}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao excluir serviço");
+      }
+
+      setServices((currentServices) =>
+        currentServices.filter((service) => service.id !== selectedService.id),
+      );
+
+      setDeleteServiceModal(false);
+      setSelectedService(null);
+    } catch (error) {
+      console.error(error);
+      alert("Não foi possível excluir o serviço.");
+    }
+  }
+  function openDeleteServiceModal(service) {
+    setSelectedService(service);
+    setDeleteServiceModal(true);
   }
 
   return (
@@ -159,9 +194,18 @@ export default function ProjectDetails() {
                   <p>{service.description}</p>
                 </div>
 
-                <strong className={styles.serviceCost}>
-                  R$ {Number(service.cost).toFixed(2)}
-                </strong>
+                <div className={styles.serviceActions}>
+                  <strong className={styles.serviceCost}>
+                    R$ {Number(service.cost).toFixed(2)}
+                  </strong>
+
+                  <button
+                    className={styles.deleteServiceButton}
+                    onClick={() => openDeleteServiceModal(service)}
+                  >
+                    Excluir
+                  </button>
+                </div>
               </div>
             ))
           )}
@@ -186,6 +230,13 @@ export default function ProjectDetails() {
           project={project}
           setModal={setEditModal}
           updateProject={updateProject}
+        />
+      )}
+      {deleteServiceModal && selectedService && (
+        <DeleteServiceModal
+          service={selectedService}
+          setModal={setDeleteServiceModal}
+          handleDelete={deleteService}
         />
       )}
     </div>
