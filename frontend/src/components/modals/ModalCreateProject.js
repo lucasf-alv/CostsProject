@@ -38,7 +38,7 @@ export default function ModalCreateProject({ setModal }) {
 
       setTimeout(() => {
         setModal(false);
-        navigate("/projects");
+        window.location.href = "/projects";
       }, 2000);
     }
   }

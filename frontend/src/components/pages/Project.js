@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "../layout/ProjectCard";
+import styles from "./Project.module.css";
+import ModalCreateProject from "../modals/ModalCreateProject";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [createProjectModal, setCreateProjectModal] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/projects")
@@ -38,6 +41,10 @@ export default function Projects() {
   return (
     <div>
       <h1>Meus Projetos</h1>
+      <button onClick={() => setCreateProjectModal(true)}>Criar Projeto</button>
+      {createProjectModal && (
+        <ModalCreateProject setModal={setCreateProjectModal} />
+      )}
 
       {projects.map((project) => (
         <ProjectCard
