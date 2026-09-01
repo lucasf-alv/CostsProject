@@ -13,7 +13,17 @@
 }
 
 .card h2 {
-  margin-bottom: 15px;
+  margin: 0 0 20px;
+
+  padding: 10px 15px;
+
+  background-color: #222;
+
+  color: #ffbb33;
+
+  border-radius: 5px;
+
+  font-size: 1.3rem;
 }
 
 .card p {
@@ -21,6 +31,45 @@
 
   color: #666;
 }
+
+/* CATEGORIA */
+
+.category {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 15px;
+
+  color: #555;
+}
+
+.categoryDot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  display: inline-block;
+}
+
+/* CORES */
+
+.design {
+  background-color: #9b59b6;
+}
+
+.desenvolvimento {
+  background-color: #3498db;
+}
+
+.marketing {
+  background-color: #2ecc71;
+}
+
+/* BOTÕES */
 
 .actions {
   display: flex;
@@ -34,29 +83,22 @@
 .deleteButton {
   padding: 8px 12px;
 
-  border: none;
+  border: 1px solid #222;
 
   border-radius: 5px;
 
+  background-color: white;
+
+  color: #222;
+
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
-.editButton {
+.editButton:hover,
+.deleteButton:hover {
   background-color: #222;
 
-  color: white;
-}
-
-.editButton:hover {
   color: #ffbb33;
-}
-
-.deleteButton {
-  background-color: #e74c3c;
-
-  color: white;
-}
-
-.deleteButton:hover {
-  background-color: #c0392b;
 }

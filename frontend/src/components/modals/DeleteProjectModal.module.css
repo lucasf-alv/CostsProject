@@ -30,6 +30,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão X */
+
 .closeButton {
   position: absolute;
 
@@ -43,15 +45,23 @@
   font-size: 30px;
 
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
 .closeButton:hover {
   color: #ef982e;
 }
 
+/* Título */
+
 .modal h2 {
   margin-bottom: 15px;
+
+  color: #222;
 }
+
+/* Texto */
 
 .modal p {
   margin-bottom: 30px;
@@ -65,6 +75,8 @@
   color: #222;
 }
 
+/* Área dos botões */
+
 .actions {
   display: flex;
 
@@ -73,11 +85,13 @@
   gap: 15px;
 }
 
+/* Botões */
+
 .cancelButton,
 .deleteButton {
   padding: 10px 25px;
 
-  border: none;
+  border: 1px solid #222;
 
   border-radius: 5px;
 
@@ -88,22 +102,30 @@
   transition: 0.3s;
 }
 
+/* Cancelar */
+
 .cancelButton {
-  background-color: #ddd;
+  background-color: white;
 
   color: #222;
 }
 
 .cancelButton:hover {
-  background-color: #ccc;
+  background-color: #222;
+
+  color: #ffbb33;
 }
 
-.deleteButton {
-  background-color: #e74c3c;
+/* Excluir */
 
-  color: white;
+.deleteButton {
+  background-color: white;
+
+  color: #222;
 }
 
 .deleteButton:hover {
-  background-color: #c0392b;
+  background-color: #222;
+
+  color: #ffbb33;
 }

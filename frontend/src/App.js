@@ -7,6 +7,7 @@ import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import Company from "./components/pages/Company";
 import Project from "./components/pages/Project";
+import ProjectDetails from "./components/pages/ProjectDetails";
 
 import Container from "./components/layout/Container";
 import NavBar from "./components/layout/NavBar";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/company" element={<Company />} />
             <Route path="/projects" element={<Project />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
           </Routes>
         </main>
 
